@@ -1,6 +1,6 @@
 # Disclaimer
 
-This fork represents a slighlty modified version of the original code, specifically created for the tutorial "Graph Machine Learning with Missing Multimodal Information", held at the 4th Learning on Graphs Conference (LoG 2025). Website: https://log-centralesupelec.github.io/missing-multimod-gml-log2025/.
+This fork represents a slightly modified version of the original code, specifically created for the tutorial "Graph Machine Learning with Missing Multimodal Information", held at the 4th Learning on Graphs Conference (LoG 2025). Website: https://log-centralesupelec.github.io/missing-multimod-gml-log2025/.
 
 Author: [Daniele Malitesta](https://danielemalitesta.github.io)
 
