@@ -1,3 +1,9 @@
+# Disclaimer
+
+This fork represents a slighlty modified version of the original code, specifically created for the tutorial "Graph Machine Learning with Missing Multimodal Information", held at the 4th Learning on Graphs Conference (LoG 2025). Website: https://log-centralesupelec.github.io/missing-multimod-gml-log2025/.
+
+Author: [Daniele Malitesta](https://danielemalitesta.github.io)
+
 # Multimodal Patient Representation Learning with Missing Modalities and Labels (ICLR 2024)
 
 This repository contains code for the ICLR'24 paper: [Multimodal Patient Representation Learning with Missing Modalities and Labels](https://openreview.net/pdf?id=Je5SHCKpPa).
