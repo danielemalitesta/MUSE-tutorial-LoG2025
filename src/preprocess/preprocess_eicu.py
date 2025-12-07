@@ -421,7 +421,7 @@ def process_apacheapsvar(infile, icu_stay_dict):
 
 
 def main():
-    input_path = os.path.join(raw_data_path, "physionet.org/files/eicu-crd/2.0")
+    input_path = os.path.join(raw_data_path, "eicu")
     output_path = os.path.join(processed_data_path, "eicu")
     create_directory(output_path)
 

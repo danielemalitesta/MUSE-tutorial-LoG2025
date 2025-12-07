@@ -1,3 +1,4 @@
+import argparse
 import os
 
 import torch
@@ -12,12 +13,15 @@ from src.utils import set_seed, processed_data_path, load_pickle
 set_seed(42)
 
 # set cuda devices
-device = "cuda:0"
-# device = "cpu"
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # set inference hyper-parameters
 batch_size = 1024
 num_workers = 8
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--dataset", type=str, default="eicu")
+args = parser.parse_args()
 
 
 class CodeData(Dataset):
@@ -60,15 +64,20 @@ def main():
     model.eval()
     model.to(device)
 
-    data = CodeData(dataset="mimic4")
-    loader = DataLoader(data, batch_size=batch_size, shuffle=False, num_workers=num_workers)
-    embeddings = get_code_embeddings(loader, model, tokenizer)
-    save_embeddings_to_file(embeddings, os.path.join(processed_data_path, "mimic4/embeddings.txt"))
+    if args.dataset == "mimic4":
+        data = CodeData(dataset="mimic4")
+        loader = DataLoader(data, batch_size=batch_size, shuffle=False, num_workers=num_workers)
+        embeddings = get_code_embeddings(loader, model, tokenizer)
+        save_embeddings_to_file(embeddings, os.path.join(processed_data_path, "mimic4/embeddings.txt"))
 
-    data = CodeData(dataset="eicu")
-    loader = DataLoader(data, batch_size=batch_size, shuffle=False, num_workers=num_workers)
-    embeddings = get_code_embeddings(loader, model, tokenizer)
-    save_embeddings_to_file(embeddings, os.path.join(processed_data_path, "eicu/embeddings.txt"))
+    elif args.dataset == "eicu":
+        data = CodeData(dataset="eicu")
+        loader = DataLoader(data, batch_size=batch_size, shuffle=False, num_workers=num_workers)
+        embeddings = get_code_embeddings(loader, model, tokenizer)
+        save_embeddings_to_file(embeddings, os.path.join(processed_data_path, "eicu/embeddings.txt"))
+
+    else:
+        raise Exception("Unknown dataset")
 
 
 if __name__ == '__main__':

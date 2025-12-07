@@ -17,12 +17,12 @@ from src.utils import count_parameters
 
 def parse_arguments(parser):
     # parser.add_argument("--dataset", type=str, default="mimic4")
-    # parser.add_argument("--dataset", type=str, default="eicu")
-    # parser.add_argument("--task", type=str, default="readmission")
-    # parser.add_argument("--monitor", type=str, default="pr_auc")
-    parser.add_argument("--dataset", type=str, default="adni")
-    parser.add_argument("--task", type=str, default="y")
-    parser.add_argument("--monitor", type=str, default="auc_macro_ovo")
+    parser.add_argument("--dataset", type=str, default="eicu")
+    parser.add_argument("--task", type=str, default="readmission")
+    parser.add_argument("--monitor", type=str, default="pr_auc")
+    # parser.add_argument("--dataset", type=str, default="adni")
+    # parser.add_argument("--task", type=str, default="y")
+    # parser.add_argument("--monitor", type=str, default="auc_macro_ovo")
     parser.add_argument("--dev", action="store_true", default=False)
     parser.add_argument("--load_no_label", type=bool, default=False)
     parser.add_argument("--embedding_size", type=int, default=128)
@@ -86,7 +86,7 @@ train_loader = DataLoader(
     train_set,
     batch_size=args.batch_size,
     collate_fn=collate_fn,
-    num_workers=4 if args.official_run else 0,
+    num_workers=0,
     pin_memory=True,
     shuffle=True
 )
@@ -94,7 +94,7 @@ val_loader = DataLoader(
     val_set,
     batch_size=args.batch_size,
     collate_fn=collate_fn,
-    num_workers=4 if args.official_run else 0,
+    num_workers=0,
     pin_memory=True,
     shuffle=False
 )
@@ -102,7 +102,7 @@ test_loader = DataLoader(
     test_set,
     batch_size=args.batch_size,
     collate_fn=collate_fn,
-    num_workers=4 if args.official_run else 0,
+    num_workers=0,
     pin_memory=True,
     shuffle=False
 )
