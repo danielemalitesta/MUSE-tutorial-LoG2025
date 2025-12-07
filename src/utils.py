@@ -12,7 +12,7 @@ import torch
 project_path = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
 project_name = os.path.basename(project_path)
 server_name = os.uname()[1]
-remote_root = "../.."
+remote_root = "/content/MUSE-tutorial-LoG2025"
 
 try:
     raw_data_path = os.path.join(remote_root, "raw_data")
